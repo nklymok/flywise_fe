@@ -1,0 +1,25 @@
+<div mat-dialog-title>
+  <h1>Airplane form {{ data ? "No. " + data.id : "" }}</h1>
+</div>
+<form [formGroup]="airplaneForm" (ngSubmit)="onFormSubmit()">
+  <input type="hidden" *ngIf="data" formControlName="id" />
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Boeing 777"
+          formControlName="name"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ data ? "Update" : "Save" }}
+    </button>
+  </div>
+</form>

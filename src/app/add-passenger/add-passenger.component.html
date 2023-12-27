@@ -1,0 +1,49 @@
+<div mat-dialog-title>
+  <h1>Passenger form {{ data ? "No. " + data.id : "" }}</h1>
+</div>
+<form [formGroup]="passengerForm" (ngSubmit)="onFormSubmit()">
+  <input type="hidden" *ngIf="data" formControlName="id" />
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>First name</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="John"
+          formControlName="firstName"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Last name</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Doe"
+          formControlName="lastName"
+        />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Age</mat-label>
+        <input matInput type="number" placeholder="18" formControlName="age" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Airplane ID</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="1"
+          formControlName="airplaneId"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ data ? "Update" : "Save" }}
+    </button>
+  </div>
+</form>
